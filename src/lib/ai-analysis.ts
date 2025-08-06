@@ -20,12 +20,6 @@ interface AnalysisResponse {
 function generateFallbackAnalysis(request: AnalysisRequest): AnalysisResponse {
   const { userInfo, results, overallScore } = request;
   
-  // Determine overall severity
-  const severityLevels = results.map(r => r.severity);
-  const hasSevere = severityLevels.includes('severe');
-  const hasHigh = severityLevels.includes('high');
-  const hasModerate = severityLevels.includes('moderate');
-  
   let diagnosis = "";
   let analysis = "";
   let recommendations: string[] = [];
@@ -99,7 +93,6 @@ export async function generateAnalysis(request: AnalysisRequest): Promise<Analys
       });
 
       if (response.ok) {
-        const data = await response.json();
         // Parse AI response and extract analysis
         // This would need to be adapted based on the actual API response format
         return {
@@ -118,7 +111,7 @@ export async function generateAnalysis(request: AnalysisRequest): Promise<Analys
 }
 
 // Generate category-specific recommendations
-export function generateCategoryRecommendations(category: string, severity: string, score: number): string[] {
+export function generateCategoryRecommendations(category: string, severity: string): string[] {
   const recommendations: { [key: string]: { [key: string]: string[] } } = {
     depression: {
       low: [

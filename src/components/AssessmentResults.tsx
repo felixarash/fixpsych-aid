@@ -3,7 +3,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { AssessmentResult, CompleteAssessment } from "@/data/assessment";
+import { CompleteAssessment } from "@/data/assessment";
 import { Download, FileText, Brain, Activity } from "lucide-react";
 
 interface AssessmentResultsProps {

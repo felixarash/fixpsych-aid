@@ -1,5 +1,5 @@
-import { assessmentCategories, AssessmentResult, CompleteAssessment, UserInfo } from '@/data/assessment';
 import { generateAnalysis, generateCategoryRecommendations } from './ai-analysis';
+import { assessmentCategories, AssessmentQuestion, AssessmentResult, UserInfo, CompleteAssessment } from '@/data/assessment';
 
 export interface AssessmentAnswers {
   [questionId: string]: number;
@@ -32,7 +32,7 @@ export function calculateResults(answers: AssessmentAnswers): AssessmentResult[]
     }
 
     // Generate category-specific recommendations
-    const recommendations = generateCategoryRecommendations(category.id, severity, percentage);
+    const recommendations = generateCategoryRecommendations(category.id, severity);
 
     results.push({
       category: category.id,
@@ -83,7 +83,7 @@ export function getTotalQuestions(): number {
   return assessmentCategories.reduce((total, category) => total + category.questions.length, 0);
 }
 
-export function getQuestionByIndex(index: number): { question: any; categoryIndex: number; questionIndex: number } | null {
+export function getQuestionByIndex(index: number): { question: AssessmentQuestion; categoryIndex: number; questionIndex: number } | null {
   let currentIndex = 0;
   
   for (let categoryIndex = 0; categoryIndex < assessmentCategories.length; categoryIndex++) {

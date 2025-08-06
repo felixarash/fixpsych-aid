@@ -7,10 +7,10 @@ import { AssessmentResults } from "@/components/AssessmentResults";
 import { generateCompleteAssessment, getTotalQuestions, getQuestionByIndex, AssessmentAnswers } from "@/lib/assessment-logic";
 import { generatePDF } from "@/lib/pdf-generator";
 import { UserInfo, CompleteAssessment } from "@/data/assessment";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { Brain, FileText, Download, ArrowLeft, ArrowRight } from "lucide-react";
+import { Brain, Download, ArrowLeft, ArrowRight } from "lucide-react";
 
 type AppState = 'user-info' | 'assessment' | 'results';
 
